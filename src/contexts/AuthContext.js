@@ -16,9 +16,32 @@ export default function AuthProvider({children}){
     //Create hooks for currentUser and another custom hook to determine if the context has information to share with nested components and load thos components in after they have been given the info.
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true); 
+    //Instantiate a GitHubAuthProvider object from Firebase
+    const gitHubProvider = new GithubAuthProvider();
+
+    async function login(){
+        signInWithPopup(auth, gitHubProvider).then(authData => { 
+            console.log(authData);
+            setCurrentUser(authData.user)})
+    }
+
+async function logout(){
+    signOut(auth).then(setCurrentUser(null))
+}
 
 //The object below will hold currentUser info, login, and logout, so we can use them in components as necessary.
-    const value = { currentUser };
+    const value = { currentUser, login, logout };
+
+    //uef => tab
+    useEffect(() => {
+        //authChange will use Firebase functionality to get user info, set the currentUser hook to the value retrieved, and allow the components to load in using the custom hook
+        const authChange = auth.onAuthStateChanged(user => {
+            setCurrentUser(user)
+            setLoading(false)
+        })
+
+        return authChange;
+    }, []);
 
     return(
         <AuthContext.Provider value={value}>

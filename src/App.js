@@ -9,22 +9,29 @@ import Bootstrap from "./Components/Bootstrap/Bootstrap";
 import Routing from "./Components/Routing/Routing";
 import Resources from "./Components/Resources/Resources";
 import NotFound from "./Components/NotFound";
+import AuthProvider from "./contexts/AuthContext";
+import Login from "./Components/Auth/Login";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        {/* The Browser Router is aliased as Router,. We surround Navigation because it has Link components that work with the BrowserRouter component. This comes from react-router-dom's docs */}
-        <Navigation />
-        {/*For every route we want to render a portion of our site for, we will create a Route component. It connects the url path wih a specific component to render  */}
-        <Routes>
-          <Route path="/" element={<Resources />} />
-          <Route path="bootstrap" element={<Bootstrap />} />
-          <Route path="routing" element={<Routing />} />
-          {/* The NotFound component will be our error handling page and will be tied to a any other Route than what is detailed above. We have Resources, Bootstrap, and Routing which are tied to specific routes. The NotFound component will be tied to any other Route we haven't detailed */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
+      <AuthProvider>
+        <Router>
+          {/* The Browser Router is aliased as Router,. We surround Navigation because it has Link components that work with the BrowserRouter component. This comes from react-router-dom's docs */}
+          <Navigation />
+          {/*For every route we want to render a portion of our site for, we will create a Route component. It connects the url path wih a specific component to render  */}
+          <Routes>
+            <Route path="/" element={<Resources />} />
+            <Route path="login" element={<Login />} />
+            <Route path="bootstrap" element={<Bootstrap />} />
+            <Route path="routing" element={<Routing />} />
+            {/* The NotFound component will be our error handling page and will be tied to a any other Route than what is detailed above. We have Resources, Bootstrap, and Routing which are tied to specific routes. The NotFound component will be tied to any other Route we haven't detailed */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </AuthProvider>
     </div>
   );
 }
