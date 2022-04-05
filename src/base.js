@@ -28,3 +28,4 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app); //This is what ties this local app to the auth functionality in Firebase and GitHub
 
 export {auth}; //We export auth so we can use this object in our logic in the React Context(AuthContext).
+
