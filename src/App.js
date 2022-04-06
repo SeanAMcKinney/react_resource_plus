@@ -25,7 +25,7 @@ function App() {
           <Routes>
             {/* ProtectedRoute is surrounding the Resources route so you have to go to Login first */}
             <Route path="/" element={<ProtectedRoute><Resources /></ProtectedRoute>} />
-            <Route path="/resources" element={<ProtectedRoute><Resources/></ProtectedRoute>} />
+            <Route path="resources" element={<ProtectedRoute><Resources/></ProtectedRoute>} />
             <Route path="login" element={<Login />} />
             <Route path="bootstrap" element={<ProtectedRoute><Bootstrap /></ProtectedRoute>} />
             <Route path="routing" element={<ProtectedRoute><Routing /></ProtectedRoute>} />
