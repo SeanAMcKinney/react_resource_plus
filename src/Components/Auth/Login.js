@@ -4,10 +4,12 @@ import { useAuth } from '../../contexts/AuthContext'
 import { Container, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
+
+//***** SEE TODO PROJECT FOR BETTER FUNCTIONALITY SOLVING handleAuth() ISSUES!!*******/
 export default function Login() {
     //Step 2 - create a variable to hold the currentUser, login, logout
     const {login} = useAuth();
-    const navigate = useNavigate(0);
+    const navigate = useNavigate();
 
     async function handleAuth(){
         //await keyword to pause any more code from executing until we get the response back from Firebase

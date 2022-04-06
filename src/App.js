@@ -13,6 +13,7 @@ import AuthProvider from "./contexts/AuthContext";
 import Login from "./Components/Auth/Login";
 import Footer from "./Components/Footer";
 import ProtectedRoute from "./Components/ProtectedRoute";
+import Categories from "./Components/Categories/Categories";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             {/* ProtectedRoute is surrounding the Resources route so you have to go to Login first */}
             <Route path="/" element={<ProtectedRoute><Resources /></ProtectedRoute>} />
             <Route path="resources" element={<ProtectedRoute><Resources/></ProtectedRoute>} />
+            <Route path="categories" element={<ProtectedRoute><Categories/></ProtectedRoute>} />
             <Route path="login" element={<Login />} />
             <Route path="bootstrap" element={<ProtectedRoute><Bootstrap /></ProtectedRoute>} />
             <Route path="routing" element={<ProtectedRoute><Routing /></ProtectedRoute>} />
