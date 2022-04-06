@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
+import AuthInfo from "./AuthInfo";
 import RouterInfo from "./RouterInfo";
 import './Routing.css'
 
@@ -28,6 +29,7 @@ export default function Routing() {
       <Container>
           <Row>
               <RouterInfo />
+              <AuthInfo />
           </Row>
       </Container>
     </section>

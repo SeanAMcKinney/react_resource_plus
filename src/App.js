@@ -12,6 +12,7 @@ import NotFound from "./Components/NotFound";
 import AuthProvider from "./contexts/AuthContext";
 import Login from "./Components/Auth/Login";
 import Footer from "./Components/Footer";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 function App() {
   return (
@@ -22,10 +23,12 @@ function App() {
           <Navigation />
           {/*For every route we want to render a portion of our site for, we will create a Route component. It connects the url path wih a specific component to render  */}
           <Routes>
-            <Route path="/" element={<Resources />} />
+            {/* ProtectedRoute is surrounding the Resources route so you have to go to Login first */}
+            <Route path="/" element={<ProtectedRoute><Resources /></ProtectedRoute>} />
+            <Route path="/resources" element={<ProtectedRoute><Resources/></ProtectedRoute>} />
             <Route path="login" element={<Login />} />
-            <Route path="bootstrap" element={<Bootstrap />} />
-            <Route path="routing" element={<Routing />} />
+            <Route path="bootstrap" element={<ProtectedRoute><Bootstrap /></ProtectedRoute>} />
+            <Route path="routing" element={<ProtectedRoute><Routing /></ProtectedRoute>} />
             {/* The NotFound component will be our error handling page and will be tied to a any other Route than what is detailed above. We have Resources, Bootstrap, and Routing which are tied to specific routes. The NotFound component will be tied to any other Route we haven't detailed */}
             <Route path="*" element={<NotFound />} />
           </Routes>
