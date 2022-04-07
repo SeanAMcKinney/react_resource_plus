@@ -102,7 +102,7 @@ export default function ResourceForm(props) {
             ) : null}
           </div>
           {/* Below we will handle the input for CategoryId, showing CategoryName */}
-          <div className="form-gourp m-3">
+          <div className="form-group m-3">
             <Field as="select" name="CategoryId" className="form-control">
               <option value="" disabled>
                 --Please Choose Category--
